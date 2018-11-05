@@ -48,13 +48,12 @@ export default function withQueryParams({
           history,
         } = this.props;
 
-        const to = history.createHref({
-          pathname: location.pathname,
+        const to = {
           search: queryString.stringify({
             ...queryString.parse(location.search, QUERYPARAMS_OPTIONS),
             ...obj,
           }, QUERYPARAMS_OPTIONS),
-        });
+        };
 
         history.push(to);
       }
