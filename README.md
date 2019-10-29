@@ -22,9 +22,9 @@ npm i @dragonraider5/react-router-query-params
 
 ## Peer dependencies
 
-* react-router v. ^4.0.0
-* react-router-dom v. ^4.0.0
 * react v. ^16.3.0
+* react-router v. ^4.0.0 || ^5.0.0
+* react-router-dom v. ^4.0.0 || ^5.0.0
 
 ## Example
 
