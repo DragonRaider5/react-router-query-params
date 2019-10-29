@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom';
 import queryString from 'query-string';
@@ -40,6 +40,12 @@ export default function withQueryParams({
           push: PropTypes.func.isRequired,
           createHref: PropTypes.func.isRequired,
         }).isRequired,
+        /* eslint-disable-next-line react/require-default-props */
+        innerRef: PropTypes.oneOfType([
+          PropTypes.object,
+          PropTypes.func,
+          PropTypes.string,
+        ]),
       }
 
       setQueryParams = (obj) => {
@@ -95,10 +101,16 @@ export default function withQueryParams({
           queryParams: allParams,
         };
 
-        return <Wrapped {...this.props} {...wrappedProps} />;
+        const { innerRef, ...props } = this.props;
+
+        return <Wrapped {...props} {...wrappedProps} ref={innerRef} />;
       }
     }
 
-    return withRouter(WithQueryParams);
+    const HOCwithRouter = withRouter(WithQueryParams);
+
+    return forwardRef((props, ref) => (
+      <HOCwithRouter {...props} innerRef={ref} />
+    ));
   };
 }

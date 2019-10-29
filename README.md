@@ -1,21 +1,30 @@
-# react-router-query-params
+# @dragonraider5/react-router-query-params
 
 [![npm version](https://badge.fury.io/js/react-router-query-params.svg)](https://badge.fury.io/js/react-router-query-params)
 [![Download Count](http://img.shields.io/npm/dm/react-router-query-params.svg?style=flat-square)](https://npmjs.org/package/react-router-query-params)
 
 > Set query parameters with a schema for react-router.
 
+See [react-router-query-params](https://www.npmjs.com/package/react-router-query-params) for the original package.
+
+This fork uses Reacts `forwardRef` (available from `react@16.3.0` upwards) to
+allow for sane ref usage with the HOC exposed by this package.
+
+In addition it fixes the usage of the new `react-router` history API, which
+doesn't require `history.createHref()` anymore and breaks hash routers when
+being used the old way.
+
 ## Install
 
 ```
-npm install --save react-router-query-params
+npm i @dragonraider5/react-router-query-params
 ```
 
 ## Peer dependencies
 
-* react
 * react-router v. ^4.0.0
 * react-router-dom v. ^4.0.0
+* react v. ^16.3.0
 
 ## Example
 
